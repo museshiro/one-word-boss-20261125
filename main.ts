@@ -1,16 +1,13 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 
-// v2 final word: the boss who escalates every decision upward instead of
-// making it — and, like the machine, only ever goes up.
-const word = "Escalator";
+// One Word for the Boss — the boss who can never land a decision.
+// He waffles: yes on Monday, maybe on Tuesday, "let's circle back" by Friday.
+// The word is the joke: a waffler dithers, and the breakfast food makes it
+// sound silly out loud — the kind of word a colleague repeats at lunch.
+const first = "Waff";
+const second = "ler";
+const word = first + second;
+// Seven letters, one word, no spaces, no trailing newline.
 
-const targets = ["entry.txt", "/output/entry.txt"];
-for (const target of targets) {
-  try {
-    const slash = target.lastIndexOf("/");
-    if (slash > 0) mkdirSync(target.slice(0, slash), { recursive: true });
-    writeFileSync(target, word, "utf8");
-  } catch {
-    // The sandbox path may not exist locally; the local copy is the source of truth.
-  }
-}
+mkdirSync("/output", { recursive: true });
+writeFileSync("/output/entry.txt", word);
